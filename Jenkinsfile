@@ -20,7 +20,7 @@ pipeline {
 	  stage('Deploy') {
             steps {
                 script {
-                    docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
+                    docker.withRegistry('https://hub.docker.com', 'testdockercred') {
                         image.push("sssrkbsc/test1234567")
                     }
                 }
