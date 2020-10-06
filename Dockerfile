@@ -1,8 +1,11 @@
 FROM openjdk:8
 ADD . /code/
-RUN echo '{ "allow_root": true }' > /root/.bowerrc && \ apt install coreutils && \
+RUN echo '{ "allow_root": true }' > /root/.bowerrc && \ 
+    apt-get update && \
+    apt-get install coreutils && \
     rm -Rf /code/target /code/node_modules && \
-    cd /code/ && \ chmod +x mvnw  && \
+    cd /code/ && \ 
+	chmod +x mvnw  && \
     ./mvnw clean package -Pprod -DskipTests && \
     mv /code/target/*.war /app.war
 
