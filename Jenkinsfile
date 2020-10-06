@@ -63,6 +63,7 @@ pipeline {
     stage('publish docker') {
         // A pre-requisite to this step is to setup authentication to the docker registry
         // https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#authentication-methods
+		steps {
         
 		docker.withRegistry('https://hub.docker.com/', 'testdockercred') {
         
@@ -70,6 +71,7 @@ pipeline {
 
         /* Push the container to the custom Registry */
         customImage.push()
+		}
 		
     }
     }
