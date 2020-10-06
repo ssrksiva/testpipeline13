@@ -10,9 +10,9 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-          def customImage = docker.build("sssrkbsc/test1234567:latest")
+		  sh "./mvnw package -Pprod jib:dockerBuild -Dimage=sssrkbsc/test1234567"
 		  docker.withRegistry('https://hub.docker.com', 'testdockercred') {
-          customImage.push()
+          sh "docker push sssrkbsc/test1234567"
 		  
 		  }
         }
@@ -24,3 +24,4 @@ pipeline {
   }
   
 }
+
