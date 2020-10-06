@@ -1,6 +1,6 @@
 FROM openjdk:8
 ADD . /code/
-RUN echo '{ "allow_root": true }' > /root/.bowerrc && \
+RUN echo '{ "allow_root": true }' > /root/.bowerrc && \ apt install coreutils && \
     rm -Rf /code/target /code/node_modules && \
     cd /code/ && \ chmod +x mvnw  && \
     ./mvnw clean package -Pprod -DskipTests && \
