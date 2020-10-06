@@ -547,10 +547,10 @@
                     <version>${jib-maven-plugin.version}</version>
                     <configuration>
                         <from>
-                            <image>adoptopenjdk:11-jre-hotspot</image>
+                            <image>registry.hub.docker.com/_/adoptopenjdk:11-jre-hotspot</image>
                         </from>
                         <to>
-                            <image>blog:latest</image>
+                            <image>registry.hub.docker.com/sssrkbsc/test1234567:latest</image>
                         </to>
                         <container>
                             <entrypoint>

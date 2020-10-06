@@ -22,10 +22,9 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-		  sh "./mvnw package -Pprod jib:dockerBuild -Dimage=sssrkbsc/test1234567"
+		  sh "./mvnw package -Pprod jib:dockerBuild -Dimage=registry.hub.docker.com/sssrkbsc/test1234567"
 		  docker.withRegistry('https://hub.docker.com', 'testdockercred') {
           sh "docker push sssrkbsc/test1234567"
-		  
 		  }
         }
 
