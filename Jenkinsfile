@@ -12,7 +12,7 @@ pipeline {
      stage('Build Image') {
         steps {
            script {
-            def image = docker.build("-f Dockerfile.local", "--no-cache", "-t sssrkbsc/test1234567")
+            def image = docker.build("-f Dockerfile.local", "--no-cache", "-t ${DOCKER_IMAGE_TAG}")
            }
         }
     }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://hub.docker.com', 'testdockercred') {
-                        image.push("sssrkbsc/test1234567")
+                        image.push(${DOCKER_IMAGE_TAG})
                     }
                 }
             }
