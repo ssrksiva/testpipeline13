@@ -10,25 +10,17 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-          def image = docker.build("-f Dockerfile.local", "--no-cache", "-t ${DOCKER_IMAGE_TAG}")
+          def customImage = docker.build("sssrkbsc/test1234567:latest")
+		  docker.withRegistry('https://hub.docker.com', 'testdockercred') {
+          customImage.push()
+		  
+		  }
         }
 
       }
     }
 
-    stage('Deploy') {
-      steps {
-        script {
-          docker.withRegistry('https://hub.docker.com', 'testdockercred') {
-            sh 'docker push ${DOCKER_IMAGE_TAG}'
-          }
-        }
-
-      }
-    }
 
   }
-  environment {
-    DOCKER_IMAGE_TAG = sssrkbsc/test1234567
-  }
+  
 }
