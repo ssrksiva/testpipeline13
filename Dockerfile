@@ -2,7 +2,7 @@ FROM openjdk:8
 ADD . /code/
 RUN echo '{ "allow_root": true }' > /root/.bowerrc && \
     rm -Rf /code/target /code/node_modules && \
-    cd /code/ && \
+    cd /code/ && \ chmod +x mvnw  && \
     ./mvnw clean package -Pprod -DskipTests && \
     mv /code/target/*.war /app.war
 
