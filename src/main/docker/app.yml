@@ -9,7 +9,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://blog-postgresql:5432/blog
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
     ports:
-      - 8080:8080
+      - 8080:8081
   blog-postgresql:
     extends:
       file: postgresql.yml
