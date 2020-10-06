@@ -65,13 +65,13 @@ pipeline {
         // https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#authentication-methods
 		steps {
         
-		docker.withRegistry('https://hub.docker.com/', 'testdockercred') {
+		
         
         def customImage = docker.build("sssrkbsc/test12345:latest")
 
         /* Push the container to the custom Registry */
         customImage.push()
-		}
+		
 		
     }
     }
