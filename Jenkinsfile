@@ -12,7 +12,7 @@ pipeline {
      stage('Build Image') {
         steps {
            script {
-            def image = docker.build("-f Dockerfile.local", "--no-cache", "-t sssrkbsc/test1234567", "--build-arg envior=${ENVIRONMENT}" )
+            def image = docker.build("-f Dockerfile.local", "--no-cache", "-t sssrkbsc/test1234567")
            }
         }
     }
