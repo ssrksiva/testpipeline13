@@ -6,8 +6,8 @@ pipeline {
         git(url: 'https://github.com/ssrksiva/testpipeline13.git', branch: 'main', poll: true)
       }
     }
-  
-   stage('Check Java') {
+
+    stage('Check Java') {
       steps {
         sh 'java -version'
       }
@@ -19,20 +19,18 @@ pipeline {
         sh './mvnw -ntp clean -P-webpack'
       }
     }
+
     stage('Build Image') {
       steps {
         script {
-		  sh "./mvnw package -Pprod jib:dockerBuild -Dimage=registry.hub.docker.com/sssrkbsc/test1234567"
-		  docker.withRegistry('https://hub.docker.com', 'testdockercred') {
-          sh "docker push sssrkbsc/test1234567"
-		  }
+          sh "./mvnw package -Pprod jib:dockerBuild -Dimage=registry.hub.docker.com/sssrkbsc/test1234567"
+          docker.withRegistry('https://hub.docker.com', 'testdockercred') {
+            sh "docker push sssrkbsc/test1234567"
+          }
         }
 
       }
     }
 
-
   }
-  
 }
-
