@@ -23,10 +23,7 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-          sh "./mvnw package -Pprod jib:dockerBuild -Dimage=sssrkbsc/test1234567"
-          docker.withRegistry('https://index.docker.io/v1/', 'testdockercred') {
-            sh "docker push sssrkbsc/test1234567"
-          }
+          sh "docker-compose -f src/main/docker/app.yml up"
         }
 
       }

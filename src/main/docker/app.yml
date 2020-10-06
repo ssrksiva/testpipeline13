@@ -1,7 +1,7 @@
 version: '2'
 services:
   blog-app:
-    image: blog
+    image: sssrkbsc/test1234567
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,swagger
