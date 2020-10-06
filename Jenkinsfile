@@ -20,7 +20,7 @@ pipeline {
       steps {
         script {
           docker.withRegistry('https://hub.docker.com', 'testdockercred') {
-            image.push(${DOCKER_IMAGE_TAG})
+            sh 'docker push ${DOCKER_IMAGE_TAG}'
           }
         }
 
@@ -29,6 +29,6 @@ pipeline {
 
   }
   environment {
-    DOCKER_IMAGE_TAG = 'sssrkbsc/test1234567'
+    DOCKER_IMAGE_TAG = sssrkbsc/test1234567
   }
 }
