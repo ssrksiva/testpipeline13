@@ -59,14 +59,14 @@ pipeline {
 
       }
     }
-	 def dockerImage
+	 
     stage('publish docker') {
         // A pre-requisite to this step is to setup authentication to the docker registry
         // https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#authentication-methods
-        sh "./mvnw package -Pprod jib:dockerBuild"
+        
 		docker.withRegistry('https://hub.docker.com/', 'testdockercred') {
-        dockerImage.push()
-        customImage = docker.build("sssrkbsc/test12345:latest")
+        
+        def customImage = docker.build("sssrkbsc/test12345:latest")
 
         /* Push the container to the custom Registry */
         customImage.push()
