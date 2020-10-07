@@ -1,4 +1,7 @@
 pipeline {
+  
+  def DOCKER_HOME = tool 'docker'
+  env.PATH="${DOCKER_HOME}:${env.PATH}"
   agent any
   stages {
     stage('Pull') {
