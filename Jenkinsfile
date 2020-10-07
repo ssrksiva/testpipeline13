@@ -1,5 +1,4 @@
 pipeline {
-  
   agent any
   stages {
     stage('Pull') {
@@ -24,7 +23,7 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-          sh "docker-compose -f src/main/docker/app.yml up"
+          sh "docker-compose -f src/main/docker/app.yml up -d"
         }
 
       }
